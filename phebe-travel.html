@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phebe Consultancy & Educational Management Services | Travel & Tours</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a1f5e;
+    --cobalt: #2d3ba8;
+    --blue: #3d4fd4;
+    --light-blue: #6c7de8;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --white: #ffffff;
+    --off-white: #f4f5fb;
+    --gray: #8890b5;
+    --dark: #0d1040;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Jost', sans-serif; background: var(--white); color: var(--navy); overflow-x: hidden; }
+
+  /* ── TOP BAR ── */
+  .topbar {
+    background: var(--navy);
+    color: rgba(255,255,255,.75);
+    font-size: .8rem;
+    font-weight: 300;
+    letter-spacing: .04em;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: .5rem 4rem;
+  }
+  .topbar a { color: var(--gold-light); text-decoration: none; margin-left: 1.2rem; }
+  .topbar a:hover { color: var(--white); }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,.97);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(45,59,168,.1);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 4rem;
+    box-shadow: 0 2px 20px rgba(26,31,94,.07);
+    transition: box-shadow .3s;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 1rem; text-decoration: none; }
+  .nav-logo img { height: 56px; width: auto; }
+  .nav-logo-text { line-height: 1.1; }
+  .nav-logo-text .name { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--navy); }
+  .nav-logo-text .sub { font-size: .62rem; font-weight: 500; letter-spacing: .08em; color: var(--cobalt); text-transform: uppercase; }
+  .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--navy); font-weight: 500; font-size: .9rem; letter-spacing: .02em; position: relative; transition: color .2s; }
+  .nav-links a::after { content:''; position: absolute; bottom: -3px; left: 0; width: 0; height: 2px; background: var(--gold); transition: width .25s; }
+  .nav-links a:hover { color: var(--cobalt); }
+  .nav-links a:hover::after { width: 100%; }
+  .btn-book {
+    background: var(--gold);
+    color: var(--navy);
+    padding: .65rem 1.6rem;
+    border-radius: 2px;
+    font-weight: 600;
+    font-size: .85rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background .2s, transform .15s;
+  }
+  .btn-book:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--dark) 0%, var(--navy) 40%, var(--cobalt) 100%);
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1600&q=80') center/cover no-repeat;
+    opacity: .18;
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(13,16,64,.85) 0%, rgba(26,31,94,.7) 60%, rgba(13,16,64,.95) 100%);
+  }
+  .hero-content { position: relative; text-align: center; color: var(--white); max-width: 820px; padding: 0 2rem; }
+  .hero-badge {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: .75rem;
+    font-weight: 600;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    padding: .4rem 1.2rem;
+    margin-bottom: 1.6rem;
+    animation: fadeUp .8s ease both;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    margin-bottom: 1.2rem;
+    animation: fadeUp .8s .15s ease both;
+  }
+  .hero-title em { color: var(--gold); font-style: normal; }
+  .hero-sub {
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(255,255,255,.82);
+    margin-bottom: 2.4rem;
+    animation: fadeUp .8s .25s ease both;
+  }
+  .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; animation: fadeUp .8s .35s ease both; }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    padding: .9rem 2.4rem;
+    font-weight: 700;
+    font-size: .95rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all .2s;
+    border: 2px solid var(--gold);
+  }
+  .btn-primary:hover { background: var(--gold-light); border-color: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,.35); }
+  .btn-outline {
+    border: 2px solid rgba(255,255,255,.5);
+    color: var(--white);
+    padding: .9rem 2.4rem;
+    font-weight: 500;
+    font-size: .95rem;
+    letter-spacing: .04em;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all .2s;
+  }
+  .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,.08); }
+  .hero-stats {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    display: flex; justify-content: center;
+    background: rgba(13,16,64,.7);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid rgba(201,168,76,.2);
+    animation: fadeUp .8s .5s ease both;
+  }
+  .stat-item { padding: 1.4rem 3rem; text-align: center; border-right: 1px solid rgba(255,255,255,.1); }
+  .stat-item:last-child { border: none; }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--gold); display: block; line-height: 1; }
+  .stat-label { font-size: .72rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.6); margin-top: .25rem; display: block; }
+
+  /* ── SECTION COMMON ── */
+  section { padding: 6rem 4rem; }
+  .section-tag { font-size: .75rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: .8rem; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 700; color: var(--navy); line-height: 1.2; }
+  .section-sub { color: var(--gray); font-weight: 300; line-height: 1.7; margin-top: .8rem; max-width: 520px; }
+  .section-header { margin-bottom: 3.5rem; }
+  .section-header.center { text-align: center; }
+  .section-header.center .section-sub { margin-left: auto; margin-right: auto; }
+
+  /* ── SERVICES STRIP ── */
+  .services-strip {
+    background: var(--navy);
+    padding: 3rem 4rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .service-card {
+    padding: 2rem;
+    border-right: 1px solid rgba(255,255,255,.08);
+    text-align: center;
+    transition: background .2s;
+    cursor: pointer;
+  }
+  .service-card:last-child { border: none; }
+  .service-card:hover { background: rgba(255,255,255,.04); }
+  .service-icon { font-size: 2.2rem; display: block; margin-bottom: .8rem; }
+  .service-title { font-weight: 600; color: var(--white); font-size: .95rem; margin-bottom: .4rem; }
+  .service-desc { color: rgba(255,255,255,.5); font-size: .8rem; line-height: 1.5; }
+
+  /* ── TOURS ── */
+  .tours-section { background: var(--off-white); }
+  .tours-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
+  .tour-card {
+    background: var(--white);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(26,31,94,.06);
+    transition: transform .25s, box-shadow .25s;
+  }
+  .tour-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(26,31,94,.14); }
+  .tour-img { height: 210px; overflow: hidden; position: relative; }
+  .tour-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+  .tour-card:hover .tour-img img { transform: scale(1.06); }
+  .tour-badge {
+    position: absolute; top: 1rem; left: 1rem;
+    background: var(--gold);
+    color: var(--navy);
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: .3rem .7rem;
+    border-radius: 2px;
+  }
+  .tour-rating {
+    position: absolute; top: 1rem; right: 1rem;
+    background: rgba(13,16,64,.8);
+    color: var(--gold);
+    font-size: .78rem;
+    font-weight: 600;
+    padding: .3rem .7rem;
+    border-radius: 2px;
+    display: flex; align-items: center; gap: .3rem;
+  }
+  .tour-body { padding: 1.4rem 1.6rem; }
+  .tour-meta { display: flex; gap: 1rem; margin-bottom: .8rem; }
+  .tour-meta span { font-size: .75rem; font-weight: 500; color: var(--gray); display: flex; align-items: center; gap: .25rem; }
+  .tour-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.08rem; color: var(--navy); margin-bottom: .5rem; line-height: 1.3; }
+  .tour-desc { font-size: .82rem; color: var(--gray); line-height: 1.6; margin-bottom: 1rem; }
+  .tour-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1.2rem; }
+  .tour-tag { background: var(--off-white); color: var(--cobalt); font-size: .68rem; font-weight: 600; letter-spacing: .05em; padding: .2rem .6rem; border-radius: 2px; }
+  .tour-footer { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--off-white); padding-top: 1rem; }
+  .tour-price { font-family: 'Playfair Display', serif; }
+  .tour-price .from { font-size: .7rem; color: var(--gray); display: block; }
+  .tour-price .amount { font-size: 1.3rem; font-weight: 700; color: var(--cobalt); }
+  .btn-sm {
+    background: var(--navy);
+    color: var(--white);
+    padding: .5rem 1.2rem;
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .05em;
+    text-decoration: none;
+    border-radius: 2px;
+    text-transform: uppercase;
+    transition: background .2s;
+  }
+  .btn-sm:hover { background: var(--cobalt); }
+
+  /* ── DESTINATIONS ── */
+  .dest-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; }
+  .dest-card {
+    position: relative; border-radius: 4px; overflow: hidden;
+    height: 260px; cursor: pointer;
+  }
+  .dest-card:nth-child(1) { grid-column: span 2; height: 320px; }
+  .dest-card img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+  .dest-card:hover img { transform: scale(1.07); }
+  .dest-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(13,16,64,.85) 0%, transparent 55%);
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 1.4rem;
+  }
+  .dest-flag { font-size: 1.4rem; }
+  .dest-name { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: var(--white); }
+  .dest-count { font-size: .73rem; color: rgba(255,255,255,.65); letter-spacing: .06em; }
+
+  /* ── WHY US ── */
+  .why-section { background: var(--white); }
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .why-img { position: relative; }
+  .why-img img { width: 100%; border-radius: 4px; display: block; }
+  .why-badge-float {
+    position: absolute;
+    bottom: -1.5rem; left: -1.5rem;
+    background: var(--gold);
+    padding: 1.4rem;
+    text-align: center;
+    border-radius: 4px;
+    box-shadow: 0 8px 30px rgba(0,0,0,.15);
+  }
+  .why-badge-float .num { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 900; color: var(--navy); display: block; }
+  .why-badge-float .txt { font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--navy); }
+  .why-list { list-style: none; margin-top: 2rem; display: flex; flex-direction: column; gap: 1.2rem; }
+  .why-item { display: flex; gap: 1rem; align-items: flex-start; }
+  .why-icon { width: 44px; height: 44px; background: var(--off-white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+  .why-text strong { display: block; font-weight: 600; color: var(--navy); margin-bottom: .25rem; }
+  .why-text p { font-size: .85rem; color: var(--gray); line-height: 1.6; }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-section { background: linear-gradient(135deg, var(--dark) 0%, var(--navy) 100%); }
+  .testimonials-section .section-title { color: var(--white); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; }
+  .testi-card {
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 4px;
+    padding: 2rem;
+  }
+  .testi-stars { color: var(--gold); font-size: 1rem; margin-bottom: 1rem; letter-spacing: .1em; }
+  .testi-text { color: rgba(255,255,255,.8); font-size: .88rem; line-height: 1.7; font-style: italic; margin-bottom: 1.4rem; }
+  .testi-author { display: flex; align-items: center; gap: .8rem; }
+  .testi-avatar { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); }
+  .testi-name { font-weight: 600; color: var(--white); font-size: .88rem; }
+  .testi-location { font-size: .75rem; color: var(--gray); }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: url('https://images.unsplash.com/photo-1488085061387-422e29b40080?w=1600&q=80') center/cover no-repeat;
+    position: relative; text-align: center; padding: 8rem 4rem;
+  }
+  .cta-section::before {
+    content:''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(13,16,64,.92) 0%, rgba(45,59,168,.85) 100%);
+  }
+  .cta-content { position: relative; color: var(--white); max-width: 660px; margin: 0 auto; }
+  .cta-content .section-title { color: var(--white); font-size: 2.6rem; margin-bottom: 1rem; }
+  .cta-content p { color: rgba(255,255,255,.75); margin-bottom: 2rem; line-height: 1.7; }
+  .cta-links { display: flex; gap: 2rem; justify-content: center; margin-top: 2.5rem; flex-wrap: wrap; }
+  .cta-link { display: flex; align-items: center; gap: .5rem; color: rgba(255,255,255,.7); font-size: .88rem; text-decoration: none; transition: color .2s; }
+  .cta-link:hover { color: var(--gold); }
+
+  /* ── CONTACT FORM ── */
+  .contact-section { background: var(--off-white); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; align-items: start; }
+  .contact-info { }
+  .contact-detail { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.5rem; }
+  .contact-icon { width: 44px; height: 44px; background: var(--navy); color: var(--gold); border-radius: 2px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+  .contact-detail strong { display: block; font-weight: 600; color: var(--navy); margin-bottom: .25rem; }
+  .contact-detail p { color: var(--gray); font-size: .88rem; line-height: 1.5; }
+  .contact-form { background: var(--white); padding: 2.5rem; border-radius: 4px; box-shadow: 0 4px 20px rgba(26,31,94,.08); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .form-group { display: flex; flex-direction: column; margin-bottom: 1rem; }
+  .form-group label { font-size: .78rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--navy); margin-bottom: .4rem; }
+  .form-group input, .form-group select, .form-group textarea {
+    border: 1.5px solid #e0e3f0;
+    border-radius: 2px;
+    padding: .8rem 1rem;
+    font-family: 'Jost', sans-serif;
+    font-size: .9rem;
+    color: var(--navy);
+    background: var(--white);
+    transition: border-color .2s;
+    outline: none;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--cobalt); }
+  .form-group textarea { resize: vertical; min-height: 110px; }
+  .btn-submit {
+    background: var(--navy);
+    color: var(--white);
+    padding: .9rem 2.4rem;
+    font-family: 'Jost', sans-serif;
+    font-weight: 700;
+    font-size: .9rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    border-radius: 2px;
+    width: 100%;
+    transition: background .2s;
+  }
+  .btn-submit:hover { background: var(--cobalt); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark);
+    color: rgba(255,255,255,.6);
+    padding: 4rem 4rem 2rem;
+  }
+  .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+  .footer-logo { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+  .footer-logo img { height: 52px; }
+  .footer-logo-text .name { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--white); }
+  .footer-logo-text .sub { font-size: .58rem; letter-spacing: .08em; color: rgba(255,255,255,.4); text-transform: uppercase; }
+  .footer-about { font-size: .83rem; line-height: 1.7; color: rgba(255,255,255,.5); margin-bottom: 1.5rem; }
+  .footer-socials { display: flex; gap: .7rem; }
+  .social-btn {
+    width: 36px; height: 36px;
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,.5);
+    text-decoration: none;
+    font-size: .9rem;
+    transition: all .2s;
+  }
+  .social-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--navy); }
+  .footer-col h4 { font-weight: 600; color: var(--white); font-size: .88rem; letter-spacing: .05em; margin-bottom: 1.2rem; text-transform: uppercase; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .6rem; }
+  .footer-col ul li a { color: rgba(255,255,255,.5); text-decoration: none; font-size: .83rem; transition: color .2s; }
+  .footer-col ul li a:hover { color: var(--gold); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding-top: 1.8rem; display: flex; justify-content: space-between; align-items: center; font-size: .78rem; }
+  .footer-bottom a { color: rgba(255,255,255,.4); text-decoration: none; margin-left: 1.5rem; }
+  .footer-bottom a:hover { color: var(--gold); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 900px) {
+    .topbar, nav { padding: .5rem 1.5rem; }
+    section { padding: 4rem 1.5rem; }
+    .tours-grid, .testimonials-grid { grid-template-columns: 1fr; }
+    .dest-grid { grid-template-columns: 1fr 1fr; }
+    .dest-card:nth-child(1) { grid-column: span 2; }
+    .why-grid, .contact-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .services-strip { grid-template-columns: 1fr 1fr; }
+    .hero-stats { flex-wrap: wrap; }
+    .stat-item { border: none; padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <span>📞 +234-908-221-2663 &nbsp;|&nbsp; ✉️ info@phebeconsultancy.com</span>
+  <div>
+    <a href="#">Facebook</a>
+    <a href="#">Instagram</a>
+    <a href="#">WhatsApp</a>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="/mnt/user-data/uploads/IMG-20260529-WA0025.jpg" alt="Phebe Logo">
+    <div class="nav-logo-text">
+      <div class="name">PHEBE</div>
+      <div class="sub">Consultancy & Educational Management Services</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#tours">Tours</a></li>
+    <li><a href="#destinations">Destinations</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="btn-book">Book Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Trusted Nigerian Travel Experts Since 2012</div>
+    <h1 class="hero-title">Your <em>Dream Journey</em><br>Starts Here</h1>
+    <p class="hero-sub">From flight bookings to visa processing, holiday packages to hotel reservations — Phebe Consultancy makes every travel dream a reality with expertise and care.</p>
+    <div class="hero-actions">
+      <a href="#tours" class="btn-primary">Explore Tour Packages</a>
+      <a href="#contact" class="btn-outline">Free Consultation</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item"><span class="stat-num">500+</span><span class="stat-label">Happy Travelers</span></div>
+    <div class="stat-item"><span class="stat-num">12+</span><span class="stat-label">Years Experience</span></div>
+    <div class="stat-item"><span class="stat-num">100%</span><span class="stat-label">Custom Itineraries</span></div>
+    <div class="stat-item"><span class="stat-num">50+</span><span class="stat-label">Destinations</span></div>
+  </div>
+</section>
+
+<!-- SERVICES STRIP -->
+<div class="services-strip" id="services">
+  <div class="service-card">
+    <span class="service-icon">✈️</span>
+    <div class="service-title">Flight Bookings</div>
+    <div class="service-desc">Competitive fares & instant confirmations on local and international routes</div>
+  </div>
+  <div class="service-card">
+    <span class="service-icon">🏨</span>
+    <div class="service-title">Hotel Reservations</div>
+    <div class="service-desc">Curated accommodations from budget-friendly to luxury resorts worldwide</div>
+  </div>
+  <div class="service-card">
+    <span class="service-icon">🛂</span>
+    <div class="service-title">Visa Processing</div>
+    <div class="service-desc">Expert visa assistance for Dubai, UK, USA, Canada, Schengen & more</div>
+  </div>
+  <div class="service-card">
+    <span class="service-icon">🌍</span>
+    <div class="service-title">Tour Packages</div>
+    <div class="service-desc">All-inclusive holiday packages tailored for families, couples & groups</div>
+  </div>
+</div>
+
+<!-- TOUR PACKAGES -->
+<section class="tours-section" id="tours">
+  <div class="section-header center reveal">
+    <span class="section-tag">Featured Experiences</span>
+    <h2 class="section-title">Popular Tour Packages</h2>
+    <p class="section-sub">Carefully curated journeys to the world's most exciting destinations, planned so all you need to do is enjoy.</p>
+  </div>
+  <div class="tours-grid">
+
+    <div class="tour-card reveal">
+      <div class="tour-img">
+        <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80" alt="Dubai">
+        <span class="tour-badge">Best Seller</span>
+        <span class="tour-rating">⭐ 4.9</span>
+      </div>
+      <div class="tour-body">
+        <div class="tour-meta">
+          <span>📅 7 Days</span>
+          <span>👥 2–12 People</span>
+        </div>
+        <div class="tour-name">Dubai Luxury Escape</div>
+        <div class="tour-desc">Experience the glittering skyline, world-class shopping, desert safaris, and iconic Burj Khalifa views on this unforgettable UAE getaway.</div>
+        <div class="tour-tags">
+          <span class="tour-tag">Luxury</span>
+          <span class="tour-tag">Desert Safari</span>
+          <span class="tour-tag">Family-Friendly</span>
+        </div>
+        <div class="tour-footer">
+          <div class="tour-price"><span class="from">From</span><span class="amount">₦1,800,000</span></div>
+          <a href="#contact" class="btn-sm">Book Now</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tour-card reveal">
+      <div class="tour-img">
+        <img src="https://images.unsplash.com/photo-1549893072-4bc678117f45?w=800&q=80" alt="Seychelles">
+        <span class="tour-badge">Top Rated</span>
+        <span class="tour-rating">⭐ 5.0</span>
+      </div>
+      <div class="tour-body">
+        <div class="tour-meta">
+          <span>📅 10 Days</span>
+          <span>👥 2–8 People</span>
+        </div>
+        <div class="tour-name">Seychelles Island Paradise</div>
+        <div class="tour-desc">Pristine white beaches, turquoise waters, and breathtaking island scenery. A romantic retreat or ultimate family beach holiday in the Indian Ocean.</div>
+        <div class="tour-tags">
+          <span class="tour-tag">Beach</span>
+          <span class="tour-tag">Romantic</span>
+          <span class="tour-tag">All-Inclusive</span>
+        </div>
+        <div class="tour-footer">
+          <div class="tour-price"><span class="from">From</span><span class="amount">₦2,500,000</span></div>
+          <a href="#contact" class="btn-sm">Book Now</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tour-card reveal">
+      <div class="tour-img">
+        <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&q=80" alt="London">
+        <span class="tour-badge">Popular</span>
+        <span class="tour-rating">⭐ 4.8</span>
+      </div>
+      <div class="tour-body">
+        <div class="tour-meta">
+          <span>📅 8 Days</span>
+          <span>👥 2–15 People</span>
+        </div>
+        <div class="tour-name">London & Europe Explorer</div>
+        <div class="tour-desc">Iconic landmarks, world-class museums, and vibrant culture across Britain's capital, with optional extension to Paris or Amsterdam.</div>
+        <div class="tour-tags">
+          <span class="tour-tag">City Break</span>
+          <span class="tour-tag">Culture</span>
+          <span class="tour-tag">Group Tours</span>
+        </div>
+        <div class="tour-footer">
+          <div class="tour-price"><span class="from">From</span><span class="amount">₦1,900,000</span></div>
+          <a href="#contact" class="btn-sm">Book Now</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tour-card reveal">
+      <div class="tour-img">
+        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&q=80" alt="Europe Summer">
+        <span class="tour-badge">🔥 2026 Special</span>
+        <span class="tour-rating">⭐ 4.9</span>
+      </div>
+      <div class="tour-body">
+        <div class="tour-meta">
+          <span>📅 12 Days</span>
+          <span>👥 2–10 People</span>
+        </div>
+        <div class="tour-name">Europe Summer 2-in-1 Package</div>
+        <div class="tour-desc">Explore two stunning European destinations in one epic summer journey — hotel, breakfast, airport transfers, and visa support all included.</div>
+        <div class="tour-tags">
+          <span class="tour-tag">Multi-Destination</span>
+          <span class="tour-tag">Summer 2026</span>
+          <span class="tour-tag">All-Inclusive</span>
+        </div>
+        <div class="tour-footer">
+          <div class="tour-price"><span class="from">From</span><span class="amount">₦4,200,000</span></div>
+          <a href="#contact" class="btn-sm">Book Now</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tour-card reveal">
+      <div class="tour-img">
+        <img src="https://images.unsplash.com/photo-1431274172761-fca41d930114?w=800&q=80" alt="France">
+        <span class="tour-badge">Trending</span>
+        <span class="tour-rating">⭐ 4.8</span>
+      </div>
+      <div class="tour-body">
+        <div class="tour-meta">
+          <span>📅 9 Days</span>
+          <span>👥 2–12 People</span>
+        </div>
+        <div class="tour-name">France & Disneyland Paris</div>
+        <div class="tour-desc">A magical combination of Parisian romance, fine cuisine, iconic art, and the ultimate Disneyland Paris experience for the whole family.</div>
+        <div class="tour-tags">
+          <span class="tour-tag">Family</span>
+          <span class="tour-tag">Theme Park</span>
+          <span class="tour-tag">Culture</span>
+        </div>
+        <div class="tour-footer">
+          <div class="tour-price"><span class="from">From</span><span class="amount">₦3,200,000</span></div>
+          <a href="#contact" class="btn-sm">Book Now</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tour-card reveal">
+      <div class="tour-img">
+        <img src="https://images.unsplash.com/photo-1519424187720-db8d25c3cf53?w=800&q=80" alt="Sweden">
+        <span class="tour-badge">New</span>
+        <span class="tour-rating">⭐ 4.7</span>
+      </div>
+      <div class="tour-body">
+        <div class="tour-meta">
+          <span>📅 7 Days</span>
+          <span>👥 2–10 People</span>
+        </div>
+        <div class="tour-name">Summer in Sweden</div>
+        <div class="tour-desc">Discover Scandinavia's serene beauty — 5 nights hotel, daily breakfast, airport transfers, and a cultural immersion you'll never forget.</div>
+        <div class="tour-tags">
+          <span class="tour-tag">Scandinavia</span>
+          <span class="tour-tag">Summer</span>
+          <span class="tour-tag">Cultural</span>
+        </div>
+        <div class="tour-footer">
+          <div class="tour-price"><span class="from">From</span><span class="amount">₦2,800,000</span></div>
+          <a href="#contact" class="btn-sm">Book Now</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- DESTINATIONS -->
+<section id="destinations" style="background:var(--white);">
+  <div class="section-header reveal">
+    <span class="section-tag">Explore the World</span>
+    <h2 class="section-title">Popular Destinations</h2>
+    <p class="section-sub">From African heritage to European splendour — we take you everywhere you dream of.</p>
+  </div>
+  <div class="dest-grid reveal">
+    <div class="dest-card">
+      <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=900&q=80" alt="Dubai">
+      <div class="dest-overlay">
+        <span class="dest-flag">🇦🇪</span>
+        <div class="dest-name">Dubai, UAE</div>
+        <div class="dest-count">5+ packages available</div>
+      </div>
+    </div>
+    <div class="dest-card">
+      <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=600&q=80" alt="London">
+      <div class="dest-overlay">
+        <span class="dest-flag">🇬🇧</span>
+        <div class="dest-name">London, UK</div>
+        <div class="dest-count">4+ packages available</div>
+      </div>
+    </div>
+    <div class="dest-card">
+      <img src="https://images.unsplash.com/photo-1549893072-4bc678117f45?w=600&q=80" alt="Seychelles">
+      <div class="dest-overlay">
+        <span class="dest-flag">🇸🇨</span>
+        <div class="dest-name">Seychelles</div>
+        <div class="dest-count">3+ packages available</div>
+      </div>
+    </div>
+    <div class="dest-card">
+      <img src="https://images.unsplash.com/photo-1431274172761-fca41d930114?w=600&q=80" alt="France">
+      <div class="dest-overlay">
+        <span class="dest-flag">🇫🇷</span>
+        <div class="dest-name">France</div>
+        <div class="dest-count">3+ packages available</div>
+      </div>
+    </div>
+    <div class="dest-card">
+      <img src="https://images.unsplash.com/photo-1528702748617-c64d49f918af?w=600&q=80" alt="USA">
+      <div class="dest-overlay">
+        <span class="dest-flag">🇺🇸</span>
+        <div class="dest-name">United States</div>
+        <div class="dest-count">6+ packages available</div>
+      </div>
+    </div>
+    <div class="dest-card">
+      <img src="https://images.unsplash.com/photo-1471513671800-b09c87e1497c?w=600&q=80" alt="Lagos">
+      <div class="dest-overlay">
+        <span class="dest-flag">🇳🇬</span>
+        <div class="dest-name">Nigeria</div>
+        <div class="dest-count">Local packages available</div>
+      </div>
+    </div>
+    <div class="dest-card">
+      <img src="https://images.unsplash.com/photo-1519424187720-db8d25c3cf53?w=600&q=80" alt="Sweden">
+      <div class="dest-overlay">
+        <span class="dest-flag">🇸🇪</span>
+        <div class="dest-name">Sweden</div>
+        <div class="dest-count">2+ packages available</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY PHEBE -->
+<section class="why-section" id="about">
+  <div class="why-grid">
+    <div class="why-img reveal">
+      <img src="https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?w=800&q=80" alt="Travel Expert">
+      <div class="why-badge-float">
+        <span class="num">12+</span>
+        <span class="txt">Years of<br>Excellence</span>
+      </div>
+    </div>
+    <div class="reveal">
+      <span class="section-tag">Why Choose Phebe</span>
+      <h2 class="section-title">Your Trusted Travel Partner<br>in Nigeria</h2>
+      <p class="section-sub">Phebe Consultancy & Educational Management Services is committed to making your travel dreams a reality through expertise, care, and guaranteed best rates.</p>
+      <ul class="why-list">
+        <li class="why-item">
+          <div class="why-icon">✈️</div>
+          <div class="why-text"><strong>Complete Travel Services</strong><p>From visa processing and flight bookings to hotel reservations and bespoke tour packages — all under one roof.</p></div>
+        </li>
+        <li class="why-item">
+          <div class="why-icon">💳</div>
+          <div class="why-text"><strong>Flexible Payment Options</strong><p>We offer convenient, flexible payment plans to make premium travel accessible to every family and individual.</p></div>
+        </li>
+        <li class="why-item">
+          <div class="why-icon">🛡️</div>
+          <div class="why-text"><strong>Trusted & Accredited</strong><p>Partnered with globally trusted brands, airlines, and hospitality networks to guarantee quality and reliability on every trip.</p></div>
+        </li>
+        <li class="why-item">
+          <div class="why-icon">📞</div>
+          <div class="why-text"><strong>24/7 Support</strong><p>Our dedicated support team is available around the clock to assist you before, during, and after your journey.</p></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="section-header center reveal" style="margin-bottom:3rem;">
+    <span class="section-tag" style="color:var(--gold-light)">What Travelers Say</span>
+    <h2 class="section-title">Experiences Our Clients Love</h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Our Dubai trip was absolutely seamless. Phebe handled everything — visas, flights, hotel, even the desert safari. Best travel agency in Lagos, hands down!"</p>
+      <div class="testi-author">
+        <img class="testi-avatar" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=100&h=100&fit=crop&crop=face" alt="">
+        <div><div class="testi-name">Adebayo & Family</div><div class="testi-location">Lagos, Nigeria • Dubai Package</div></div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Phebe made our company's group trip to London stress-free. 15 colleagues, all with different needs — they managed everything perfectly and at great rates."</p>
+      <div class="testi-author">
+        <img class="testi-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face" alt="">
+        <div><div class="testi-name">Chidinma Okafor</div><div class="testi-location">Abuja • Corporate Group Tour</div></div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"I never thought Seychelles was possible on my budget. Phebe found us an incredible all-inclusive package. Our honeymoon was a dream come true!"</p>
+      <div class="testi-author">
+        <img class="testi-avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" alt="">
+        <div><div class="testi-name">Tunde & Kemi</div><div class="testi-location">Lagos • Seychelles Honeymoon</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-content reveal">
+    <span class="section-tag" style="color:var(--gold)">Ready to Travel?</span>
+    <h2 class="section-title">Start Your Adventure Today</h2>
+    <p>Our expert travel consultants are ready to craft your perfect itinerary — whether it's a quick getaway or a full multi-country expedition. Get a free consultation now.</p>
+    <a href="#contact" class="btn-primary">Get Free Consultation</a>
+    <div class="cta-links">
+      <a href="tel:+2349082212663" class="cta-link">📞 +234-908-221-2663</a>
+      <a href="https://wa.me/2349082212663" class="cta-link">💬 WhatsApp Us</a>
+      <a href="mailto:info@phebeconsultancy.com" class="cta-link">✉️ Send Email</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="section-header reveal">
+    <span class="section-tag">Get In Touch</span>
+    <h2 class="section-title">Plan Your Perfect Trip</h2>
+    <p class="section-sub">Fill in your details and our travel experts will get back to you within 24 hours with a custom itinerary and competitive quote.</p>
+  </div>
+  <div class="contact-grid">
+    <div class="reveal">
+      <div class="contact-detail">
+        <div class="contact-icon">📍</div>
+        <div><strong>Our Office</strong><p>3rd Floor, Brasas'r Place<br>69 Admiralty Way, Lekki Phase 1<br>Lagos, Nigeria</p></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon">📞</div>
+        <div><strong>Phone</strong><p>+234-908-221-2663<br>+234-812-000-0000</p></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon">✉️</div>
+        <div><strong>Email</strong><p>info@phebeconsultancy.com<br>holidays@phebeconsultancy.com</p></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon">🕐</div>
+        <div><strong>Office Hours</strong><p>Monday – Saturday: 8AM – 6PM (WAT)<br>24/7 WhatsApp Support Available</p></div>
+      </div>
+    </div>
+    <div class="contact-form reveal">
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" placeholder="Your first name">
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" placeholder="Your last name">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+234...">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Interested In</label>
+        <select>
+          <option>Select a service...</option>
+          <option>Flight Booking</option>
+          <option>Hotel Reservation</option>
+          <option>Tour Package</option>
+          <option>Visa Processing</option>
+          <option>Group / Corporate Travel</option>
+          <option>Custom Itinerary</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Preferred Destination</label>
+        <input type="text" placeholder="e.g. Dubai, London, Seychelles...">
+      </div>
+      <div class="form-group">
+        <label>Tell Us About Your Trip</label>
+        <textarea placeholder="Travel dates, number of travelers, budget, any special requirements..."></textarea>
+      </div>
+      <button class="btn-submit">Send My Enquiry →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">
+        <img src="/mnt/user-data/uploads/IMG-20260529-WA0025.jpg" alt="Phebe Logo">
+        <div class="footer-logo-text">
+          <div class="name">PHEBE</div>
+          <div class="sub">Consultancy & Educational Management Services</div>
+        </div>
+      </div>
+      <p class="footer-about">Making travel dreams a reality since 2012. We provide affordable tour packages, flight bookings, hotel accommodations, and visa processing services across Nigeria and beyond.</p>
+      <div class="footer-socials">
+        <a href="#" class="social-btn">f</a>
+        <a href="#" class="social-btn">in</a>
+        <a href="#" class="social-btn">tw</a>
+        <a href="#" class="social-btn">wa</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#tours">Tour Packages</a></li>
+        <li><a href="#destinations">Destinations</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Our Services</h4>
+      <ul>
+        <li><a href="#">Flight Bookings</a></li>
+        <li><a href="#">Hotel Reservations</a></li>
+        <li><a href="#">Visa Processing</a></li>
+        <li><a href="#">Holiday Packages</a></li>
+        <li><a href="#">Group Travel</a></li>
+        <li><a href="#">Travel Insurance</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Top Destinations</h4>
+      <ul>
+        <li><a href="#">🇦🇪 Dubai, UAE</a></li>
+        <li><a href="#">🇬🇧 London, UK</a></li>
+        <li><a href="#">🇺🇸 United States</a></li>
+        <li><a href="#">🇸🇨 Seychelles</a></li>
+        <li><a href="#">🇫🇷 France</a></li>
+        <li><a href="#">🇸🇪 Sweden</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Phebe Consultancy & Educational Management Services. All rights reserved.</span>
+    <div>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms & Conditions</a>
+      <a href="#">FAQ</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('in'), i * 80);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => obs.observe(r));
+
+  // Smooth nav scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+
+  // Contact form submission feedback
+  document.querySelector('.btn-submit').addEventListener('click', function() {
+    this.textContent = '✓ Enquiry Sent! We\'ll be in touch soon.';
+    this.style.background = '#2d8a55';
+    setTimeout(() => {
+      this.textContent = 'Send My Enquiry →';
+      this.style.background = '';
+    }, 3500);
+  });
+</script>
+</body>
+</html>
